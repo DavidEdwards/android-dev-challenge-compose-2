@@ -43,7 +43,8 @@ class MainViewModel : ViewModel() {
 
         var currentTimeRemaining = time
         var currentTotalTime = time
-        countdown.value = TimePair(remainingTime = currentTimeRemaining, totalTime = currentTotalTime)
+        countdown.value =
+            TimePair(remainingTime = currentTimeRemaining, totalTime = currentTotalTime)
 
         while (currentTimeRemaining > 0) {
             delay(1000L)
@@ -51,7 +52,8 @@ class MainViewModel : ViewModel() {
             currentTotalTime = countdown.value?.totalTime ?: currentTotalTime
             Log.v("TIMER", "Timer at $currentTimeRemaining / $currentTotalTime")
             currentTimeRemaining -= 1
-            countdown.value = TimePair(remainingTime = currentTimeRemaining, totalTime = currentTotalTime)
+            countdown.value =
+                TimePair(remainingTime = currentTimeRemaining, totalTime = currentTotalTime)
         }
 
         addResult(currentTotalTime)

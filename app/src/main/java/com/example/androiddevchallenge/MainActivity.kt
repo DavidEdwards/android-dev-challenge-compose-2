@@ -18,14 +18,27 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -111,7 +124,7 @@ fun Timer() {
 fun TimerCircle(time: TimePair) {
     val vm: MainViewModel = viewModel()
 
-    val progress = if(time.remainingTime != 0 && time.totalTime != 0) {
+    val progress = if (time.remainingTime != 0 && time.totalTime != 0) {
         (time.remainingTime.toFloat() / time.totalTime.toFloat())
     } else 0f
 
@@ -163,7 +176,7 @@ fun Results(listData: ListData) {
             style = MaterialTheme.typography.h6
         )
 
-        if(listData.list.isNotEmpty()) {
+        if (listData.list.isNotEmpty()) {
             LazyColumn {
                 items(listData.list) { result ->
                     Text(
