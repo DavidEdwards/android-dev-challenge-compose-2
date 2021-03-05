@@ -67,5 +67,4 @@ class MainViewModel : ViewModel() {
             countdownList.value = ListData(list)
         }
     }
-
 }

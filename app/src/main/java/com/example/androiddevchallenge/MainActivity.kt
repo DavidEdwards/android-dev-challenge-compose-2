@@ -66,9 +66,11 @@ class MainActivity : AppCompatActivity() {
 fun MyApp() {
     Scaffold(
         topBar = {
-            TopAppBar(title = {
-                Text(text = LocalContext.current.getString(R.string.app_name))
-            })
+            TopAppBar(
+                title = {
+                    Text(text = LocalContext.current.getString(R.string.app_name))
+                }
+            )
         },
         content = {
             TimerScreen()
@@ -127,7 +129,6 @@ fun TimerCircle(time: TimePair) {
     val progress = if (time.remainingTime != 0 && time.totalTime != 0) {
         (time.remainingTime.toFloat() / time.totalTime.toFloat())
     } else 0f
-
 
     val progressState = animateFloatAsState(
         targetValue = progress
